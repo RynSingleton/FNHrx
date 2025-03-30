@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000); // 5-second loading screen
+    }, 5000); // 5-second loading screen
 
     return () => clearTimeout(timer);
   }, []);
@@ -39,7 +39,7 @@ function App() {
           className="squiggly-animation"
         />
         <div className="loading-text">
-          <p>FullNodeHealth</p>
+          <p>fullnode health</p>
         </div>
       </div>
     );
@@ -49,17 +49,15 @@ function App() {
     <div className="app-container">
       {/* Left Section - Image Upload */}
       <div className="left-section">
-        <h1>Seizure Detection and Music Player</h1>
+        <h1>FullNode Health</h1>
+        <h2>Seizure Detection and Music Player</h2>
         <FileUpload onUpload={handleImageUpload} onSubmit={handleSubmit} />
         {uploadedImage && isSubmitted && <p className="seizure-text">Seizure detected</p>}
         <GenreSelector onGenreSelect={setSelectedGenre} />
         {selectedGenre && <MusicPlayer genre={selectedGenre} />}
       </div>
 
-      {/* Right Section - Visualizer */}
-      <div className="right-section">
-        <Visualizer />
-      </div>
+      
     </div>
   );
 }

@@ -1,205 +1,4 @@
-/* Global Styles */
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: #ffffff;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background-color: black;
-  cursor: url('assets/cursor.png'), auto;
-}
-
-/* Loading Screen */
-.loading-screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-}
-
-.squiggly-animation {
-  width: 300px;
-  height: 300px;
-  animation: pulse 1.5s infinite;
-}
-
-.loading-text {
-  margin-top: 20px;
-  font-size: 2rem;
-  color: white;
-  font-weight: bold;
-}
-
-/* Animation for loading screen */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* App Container */
-.app-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-/* Left Section */
-.left-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 20px;
-  flex: 1;
-  position: relative;
-  z-index: 2;
-}
-
-/* Heading */
-h1 {
-  font-size: 2.5rem;
-  text-align: center;
-  background: linear-gradient(90deg, #00d4ff, #0099ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
-}
-
-/* File Upload */
-.file-upload {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-input[type="file"] {
-  border: 2px dashed #00d4ff;
-  padding: 15px;
-  width: 100%;
-  text-align: center;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #00d4ff;
-  cursor: pointer;
-}
-
-input[type="file"]:hover {
-  background-color: rgba(0, 212, 255, 0.2);
-}
-
-button {
-  background: linear-gradient(45deg, #00d4ff, #0099ff);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: transform 0.3s ease;
-}
-
-button:hover {
-  transform: translateY(-3px);
-}
-
-/* Seizure Detection */
-.seizure-text {
-  color: #ff4f4f;
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-top: 20px;
-  animation: pulse 1s infinite;
-}
-
-/* Genre Selector */
-.genre-selector select {
-  background-color: #0099ff;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-.genre-selector select:focus {
-  outline: none;
-  background-color: #00d4ff;
-}
-
-/* Music Player */
-.music-player {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 16px;
-}
-
-.music-player p {
-  font-size: 1.1rem;
-  margin: 10px 0;
-}
-
-/* Right Section */
-.right-section {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Purple PNG overlay */
-.purple-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('assets/purple.png');
-  background-size: cover;
-  z-index: 1;
-}
-
-/* Black circle PNG overlay */
-.circle-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
-  background-image: url('assets/black_circle.png');
-  background-size: cover;
-  z-index: 2;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 2rem;
-  }
-}
-
-/* body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #1e1e2f, #252547, #3b3b92);
@@ -325,6 +124,19 @@ button:hover {
   margin: 10px 0;
 }
 
+.squiggly-animation {
+  width: 300px;
+  height: 300px;
+  animation: pulse 1.5s infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
 @media (max-width: 600px) {
   h1 {
     font-size: 2rem;
@@ -333,4 +145,4 @@ button:hover {
     width: 150px;
     height: 150px;
   }
-} */
+}
