@@ -1,6 +1,6 @@
 # FNHrx
 
-FullNode Health project utilizes machine learning to predict the onset of a seizure based on EEG data. Using a Convolutional Neural Network (CNN), the system processes the EEG data, outputs a probability of whether a seizure is imminent, and recommends a music genre to help reduce stress and calm the patient.
+FullNode Health utilizes machine learning to predict the onset of a seizure based on EEG data. Using a Convolutional Neural Network (CNN), the system processes the EEG data, outputs a probability of whether a seizure is imminent, and recommends a music genre to help reduce stress and calm the patient.
 
 1. The model classifies the input EEG data into two categories: 1 (seizure) or 0 (no seizure).
 2. If a seizure is predicted with high confidence, the system triggers the music recommendation.
