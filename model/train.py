@@ -17,6 +17,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
+import matplotlib.pyplot as plt
+
 #preprocess data
 selected_columns = ['# FP1-F7', 'F7-T7', 'T7-P7', 'P7-O1', 
                      'FP1-F3', 'F3-C3', 'C3-P3', 'P3-O1', 
@@ -58,7 +60,7 @@ X = scaler.fit_transform(X)
 
 # Assuming each sample has multiple channels (23 channels)
 n_channels = 23
-n_timesteps = 3000
+n_timesteps = 5000
 
 # Ensure that X has a number of samples that is a multiple of 3000
 # First, calculate the total number of samples in X
@@ -121,7 +123,7 @@ model = Sequential([
 
 # Compile with better learning rate
 model.compile(
-    optimizer=tf.keras.optimizers.Adam(learning_rate=0.002),
+    optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
     loss='binary_crossentropy',
     metrics=['accuracy']
 )
@@ -130,20 +132,23 @@ model.compile(
 callbacks = [
     EarlyStopping(
         monitor='val_loss',
-        patience=10,
-        restore_best_weights=True
+        patience=20,
+        restore_best_weights=True,
+        verbose=1
     ),
     ReduceLROnPlateau(
         monitor='val_loss',
-        factor=0.5,
-        patience=5,
-        min_lr=0.00001
+        factor=0.2,
+        patience=10,
+        min_lr=0.000001,
+        verbose=1
     ),
     ModelCheckpoint(
         'best_model.keras',
         monitor='val_accuracy',
         save_best_only=True,
-        mode='max'
+        mode='max',
+        verbose=1
     )
 ]
 
@@ -152,12 +157,37 @@ print("Fit model on training data")
 history = model.fit(
     X_train,
     y_train,
-    batch_size=32,  # Smaller batch size for better generalization
+    batch_size=32,
     validation_split=0.2,
     epochs=100,
     callbacks=callbacks,
     verbose=1
 )
+
+# Plot training history
+plt.figure(figsize=(12, 4))
+
+# Plot training & validation accuracy
+plt.subplot(1, 2, 1)
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Model Accuracy')
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Validation'], loc='upper left')
+
+# Plot training & validation loss
+plt.subplot(1, 2, 2)
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Model Loss')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Validation'], loc='upper left')
+
+plt.tight_layout()
+plt.savefig('training_history.png')
+plt.close()
 
 #create testing function
 print("Evaluate on test data")
